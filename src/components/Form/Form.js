@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form";
 import { Autocomplete, TextField } from '@mui/material'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { deviceData } from '../data/data'
+import { deviceData } from '../../data/data'
+import styles from './style.module.scss'
 
 const customStyles = {
 	content: {
@@ -66,20 +67,19 @@ const Comments = (props) => {
 	return (
 		<Modal
 			isOpen={modalIsOpen}
-			onAfterOpen={afterOpenModal}
 			onRequestClose={onRequestClose}
-			style={customStyles}
 			ariaHideApp={false}
+			className={styles.modalCreate}
 		>
 			<h2>Create a task</h2>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<div className="formInline">
-					<label className="label labelCustom">Title</label>
+				<div className={styles.formInline}>
+					<label className={styles.labelCustom}>Title</label>
 					<TextField name="title"  {...register("title")} style={{ width: '100%' }} />
 				</div>
 
-				<div className="formInline">
-					<label className="label labelCustom">Device</label><br />
+				<div className={styles.formInline}>
+					<label className={styles.labelCustom}>Device</label><br />
 					<Autocomplete
 						disablePortal
 						id="combo-box-demo"
@@ -90,28 +90,28 @@ const Comments = (props) => {
 					/>
 				</div>
 
-				<div className="formInline">
-					<label className="labelCustom">Label</label><br />
+				<div className={styles.formInline}>
+					<label className={styles.labelCustom}>Label</label><br />
 					<TextField name="label"  {...register("label")} sx={{ width: 350 }} />
 
-					<label className="labelCustom">Deadline</label><br />
+					<label className={styles.labelCustom}>Deadline</label><br />
 					<LocalizationProvider dateAdapter={AdapterDateFns}>
 						<DatePicker
 							isRequired={true}
-							sx={{ width: 350 }}
+							sx={{ width: 334 }}
 							onChange={(value) => setDeadline(value)}
 							format="yyyy-MMM-dd"
 						/>
 					</LocalizationProvider>
 				</div>
 
-				<div className="formInline">
-					<label className="labelCustom">Link</label><br />
+				<div className={styles.formInline}>
+					<label className={styles.labelCustom}>Link</label><br />
 					<TextField name="link"  {...register("link")} style={{ width: '100%' }} />
 				</div>
 
-				<div className="buttonWrapper">
-					<input type="button" value="Cancel" className="cancelButton" onClick={onRequestClose}></input>
+				<div className={styles.buttonWrapper}>
+					<input type="button" value="Cancel" className={styles.cancelButton} onClick={onRequestClose}></input>
 					<input type="submit" value="Create"></input>
 				</div>
 			</form>

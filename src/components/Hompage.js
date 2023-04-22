@@ -1,11 +1,12 @@
 import React from "react";
 import TasksContainer from "./TasksContainer";
-import Nav from "./Nav";
 
 const Task = () => {
 	return (
 		<div>
-			<Nav />
+			<nav className='navbar'>
+				<h3>Kanban board</h3>
+			</nav>
 			<TasksContainer />
 		</div>
 	);

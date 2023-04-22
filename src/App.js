@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import Task from "./components/Task";
+import Hompage from "./components/Hompage";
 
 function App() {
 	return (
 		<div>
 			<Routes>
-				<Route path='/' element={<Task />} />
+				<Route path='/' element={<Hompage />} />
 			</Routes>
 		</div>
 	);
